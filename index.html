@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IZWE Kenya Office Locations</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0; /* Light gray background color */
+        }
+
+        header {
+            background-color: #333;
+            padding: 10px 0;
+            text-align: LEFT;
+            color: white;
+            font-family: 'Arial Black', sans-serif;
+            font-size: 20pt; /* Reduced font size */
+            line-height: 10pt; /* Reduced line height */
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between; /* Added to push items to the sides */
+            align-items: center;
+            background-color: #FFFFFF; /* Updated nav bar background color */
+            padding: 10px;
+            border-radius:0px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 20px;
+            margin: 0 10px;
+            border-radius: 6px;
+            transition: background-color 0.3s, transform 0.3s;
+            background-color: #0055CC;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a:hover {
+            background-color: #004499; /* Darker shade on hover */
+            transform: translateY(-2px); /* Lift the button slightly on hover */
+        }
+
+        #map-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+
+        iframe {
+            border: none;
+            width: 100%; /* Adjust width to fill the container */
+            height: 100%; /* Adjust height to fill the container */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>IZWE Office Locations</h1>
+    </header>
+
+    <nav>
+        <div>
+            <a href="#" onclick="openRegion('Nairobi')">Nairobi</a>
+            <a href="#" onclick="openRegion('Nakuru')">Nakuru</a>
+            <a href="#" onclick="openRegion('Kisumu')">Kisumu</a>
+            <a href="#" onclick="openRegion('Eldoret')">Eldoret</a>
+            <a href="#" onclick="openRegion('Mombasa')">Mombasa</a>
+        </div>
+        <a href="#" id="back-home" style="margin-right: 10px; display: none;">Back to Home</a> <!-- Hidden initially -->
+    </nav>
+
+    <div id="map-container">
+        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1SDgdnkZXkNgjlMgb4TnTkIGrDHgalEU&z=5" width="640" height="480"></iframe>
+    </div>
+
+    <script>
+        function openRegion(region) {
+            var urls = {
+                'Nairobi': 'https://www.google.com/maps/d/u/0/embed?mid=1i_iP02kawObUqHj6VIRoJqUUs8ZSOYI',
+                'Nakuru': 'https://www.google.com/maps/d/u/0/embed?mid=19B30eKbJm2aP4AtyvIEmHHvNyqKyHak&ehbc=2E312F&noprof=1',
+                'Kisumu': 'https://www.google.com/maps/d/u/0/embed?mid=1SycbxUinvkJDXbNzlSUShYaodJBWrN4&ehbc=2E312F',
+                'Eldoret': 'https://www.google.com/maps/d/u/0/embed?mid=1D7w_A0TiNtFHAnRnVbNZNn7iRFK3Xrw',
+                'Mombasa': 'https://www.google.com/maps/d/u/0/embed?mid=1e9tZgl1FFqfK1js-uRyKKOl72nx1Hkg'
+            };
+
+            var contentContainer = document.getElementById('map-container');
+            var iframe = document.createElement('iframe');
+            iframe.src = urls[region];
+            iframe.width = "640";
+            iframe.height = "480";
+            iframe.style.border = "none";
+            iframe.style.width = "100%";
+            iframe.style.height = "100%";
+
+            contentContainer.innerHTML = '';
+            contentContainer.appendChild(iframe);
+
+            var backHomeLink = document.getElementById('back-home');
+            backHomeLink.style.display = 'inline'; // Show the back home link
+            backHomeLink.onclick = function() {
+                contentContainer.innerHTML = '<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1SDgdnkZXkNgjlMgb4TnTkIGrDHgalEU&z=5" width="640" height="480"></iframe>';
+                backHomeLink.style.display = 'none'; // Hide the back home link again
+            };
+        }
+    </script>
+</body>
+</html>
