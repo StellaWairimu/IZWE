@@ -18,8 +18,8 @@
             text-align: LEFT;
             color: white;
             font-family: 'Arial Black', sans-serif;
-            font-size: 20pt; /* Reduced font size */
-            line-height: 10pt; /* Reduced line height */
+            font-size: 10pt; /* Reduced font size */
+            line-height: 5pt; /* Reduced line height */
         }
 
         nav {
@@ -28,7 +28,7 @@
             align-items: center;
             background-color: #FFFFFF; /* Updated nav bar background color */
             padding: 10px;
-            border-radius:0px;
+            border-radius:5px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
@@ -64,7 +64,7 @@
 </head>
 <body>
     <header>
-        <h1>IZWE Office Locations</h1>
+        <h1>IZWE Kenya Office Locations</h1>
     </header>
 
     <nav>
@@ -107,8 +107,10 @@
             var backHomeLink = document.getElementById('back-home');
             backHomeLink.style.display = 'inline'; // Show the back home link
             backHomeLink.onclick = function() {
-                contentContainer.innerHTML = '<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1SDgdnkZXkNgjlMgb4TnTkIGrDHgalEU&z=5" width="640" height="480"></iframe>';
-                backHomeLink.style.display = 'none'; // Hide the back home link again
+                <!--contentContainer.innerHTML = '<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1SDgdnkZXkNgjlMgb4TnTkIGrDHgalEU&z=5" width="640" height="480"></iframe>';-->
+                <!--contentContainer.innerHTML =<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1SDgdnkZXkNgjlMgb4TnTkIGrDHgalEU&ehbc=2E312F&noprof=1" width="640" height="480"></iframe>-->
+				contentContainer.innerHTML = '<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1SDgdnkZXkNgjlMgb4TnTkIGrDHgalEU&ehbc=2E312F&noprof=1" width="640" height="480"></iframe>';
+				backHomeLink.style.display = 'none'; // Hide the back home link again
             };
         }
     </script>
