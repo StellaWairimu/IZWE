@@ -48,6 +48,10 @@
             transform: translateY(-2px); /* Lift the button slightly on hover */
         }
 
+        nav a.selected {
+            background-color: #004499; /* Darker shade for selected item */
+        }
+
         #map-container {
             display: flex;
             justify-content: center;
@@ -74,12 +78,13 @@
             <a href="#" onclick="openRegion('Kisumu')">Kisumu</a>
             <a href="#" onclick="openRegion('Eldoret')">Eldoret</a>
             <a href="#" onclick="openRegion('Mombasa')">Mombasa</a>
+            <a href="#" onclick="openRegion('New Outlook')">New Outlook</a>
         </div>
         <a href="#" id="back-home" style="margin-right: 10px; display: none;">Back to Home</a> <!-- Hidden initially -->
     </nav>
 
     <div id="map-container">
-        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1SDgdnkZXkNgjlMgb4TnTkIGrDHgalEU&z=5" width="640" height="480"></iframe>
+        <iframe id="map-iframe" width="640" height="480" src="https://www.google.com/maps/d/u/0/embed?mid=1SDgdnkZXkNgjlMgb4TnTkIGrDHgalEU&z=5"></iframe>
     </div>
 
     <script>
@@ -89,28 +94,19 @@
                 'Nakuru': 'https://www.google.com/maps/d/u/0/embed?mid=19B30eKbJm2aP4AtyvIEmHHvNyqKyHak&ehbc=2E312F&noprof=1&z=5',
                 'Kisumu': 'https://www.google.com/maps/d/u/0/embed?mid=1SycbxUinvkJDXbNzlSUShYaodJBWrN4&ehbc=2E312F&z=5',
                 'Eldoret': 'https://www.google.com/maps/d/u/0/embed?mid=1D7w_A0TiNtFHAnRnVbNZNn7iRFK3Xrw&z=5',
-                'Mombasa': 'https://www.google.com/maps/d/u/0/embed?mid=1e9tZgl1FFqfK1js-uRyKKOl72nx1Hkg&z=5'
+                'Mombasa': 'https://www.google.com/maps/d/u/0/embed?mid=1e9tZgl1FFqfK1js-uRyKKOl72nx1Hkg&z=5',
+                'New Outlook': 'https://www.google.com/maps/d/u/0/embed?mid=1q3Ba6Gc8sf2-esZNL1phSDqNcgBva6E&ehbc=2E312F&z=5'
             };
 
             var contentContainer = document.getElementById('map-container');
-            var iframe = document.createElement('iframe');
+            var iframe = document.getElementById('map-iframe');
             iframe.src = urls[region];
-            iframe.width = "640";
-            iframe.height = "480";
-            iframe.style.border = "none";
-            iframe.style.width = "100%";
-            iframe.style.height = "100%";
-
-            contentContainer.innerHTML = '';
-            contentContainer.appendChild(iframe);
 
             var backHomeLink = document.getElementById('back-home');
             backHomeLink.style.display = 'inline'; // Show the back home link
             backHomeLink.onclick = function() {
-                <!--contentContainer.innerHTML = '<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1SDgdnkZXkNgjlMgb4TnTkIGrDHgalEU&z=5" width="640" height="480"></iframe>';-->
-                <!--contentContainer.innerHTML =<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1SDgdnkZXkNgjlMgb4TnTkIGrDHgalEU&ehbc=2E312F&noprof=1" width="640" height="480"></iframe>-->
-				contentContainer.innerHTML = '<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1SDgdnkZXkNgjlMgb4TnTkIGrDHgalEU&ehbc=2E312F&noprof=1" width="640" height="480"></iframe>';
-				backHomeLink.style.display = 'none'; // Hide the back home link again
+                iframe.src = 'https://www.google.com/maps/d/u/0/embed?mid=1SDgdnkZXkNgjlMgb4TnTkIGrDHgalEU&z=5'; // Reset to the default map
+                backHomeLink.style.display = 'none'; // Hide the back home link again
             };
         }
     </script>
